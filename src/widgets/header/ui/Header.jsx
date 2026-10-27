@@ -1,5 +1,9 @@
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { ROUTES } from '@/shared/config'
+import { cn } from '@/shared/lib'
+import { Button } from '@/shared/ui/Button'
+import logo from '@/shared/assets/logo.svg'
+import userIcon from '@/shared/assets/User.svg'
 
 const NAV_LINKS = [
     { to: ROUTES.howToBuy, label: 'Как покупать' },
@@ -9,20 +13,44 @@ const NAV_LINKS = [
     { to: ROUTES.partner, label: 'Бонусы' },
     { to: ROUTES.blog, label: 'Блог' },
     { to: ROUTES.shops, label: 'Магазины' },
-    { to: ROUTES.login, label: 'Вход' },
-    { to: ROUTES.cabinet.root, label: 'Кабинет (dev)' },
-    { to: ROUTES.admin.root, label: 'Админка (dev)' },
 ]
 
 export function Header() {
     return (
-        <header>
-            <nav style={{ display: 'flex', gap: 16, padding: 16 }}>
-                <Link to={ROUTES.home}>Главная</Link>
-                {NAV_LINKS.map(({ to, label }) => (
-                    <Link key={to} to={to}>{label}</Link>
-                ))}
-            </nav>
+        <header className='h-30'>
+            <div className='flex items-center justify-between w-full h-full px-5 mx-auto max-w-350'>
+                <Link to={ROUTES.home}>
+                    <img src={logo} alt='OkeyPost' />
+                </Link>
+
+                <nav className='flex gap-10'>
+                    {NAV_LINKS.map(({ to, label }) => (
+                        <NavLink
+                            key={to}
+                            to={to}
+                            className={({ isActive }) =>
+                                cn(
+                                    'text-[15px] font-medium transition hover:text-primary',
+                                    isActive && 'text-primary',
+                                )
+                            }
+                        >
+                            {label}
+                        </NavLink>
+                    ))}
+                </nav>
+
+                <div className='flex items-center gap-10'>
+                    <Link
+                        to={ROUTES.login}
+                        className='flex items-center gap-3 text-[15px] font-medium'
+                    >
+                        <img src={userIcon} alt='' />
+                        Вход
+                    </Link>
+                    <Button className="w-42.5">Связаться с нами</Button>
+                </div>
+            </div>
         </header>
     )
 }
