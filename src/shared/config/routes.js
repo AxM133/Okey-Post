@@ -1,0 +1,38 @@
+export const ROUTES = {
+    home: '/',
+    howToBuy: '/how-to-buy',
+    sales: '/sales',
+    prices: '/prices',
+    faq: '/faq',
+    partner: '/partner',
+    blog: '/blog',
+    shops: '/shops',
+    login: '/login',
+    register: '/register',
+    forgotPassword: '/forgot-password',
+
+    cabinet: {
+        root: '/cabinet',
+        profile: '/cabinet/profile',
+        orders: '/cabinet/orders',
+        parcels: '/cabinet/parcels',
+        transactions: '/cabinet/transactions',
+        createParcel: '/cabinet/create-parcel',
+        addressBook: '/cabinet/address-book',
+        notifications: '/cabinet/notifications',
+    },
+
+    admin: {
+        root: '/admin',
+        login: '/admin/login',
+        orders: '/admin/orders',
+        orderEdit: '/admin/orders/:id',
+        parcels: '/admin/parcels',
+        users: '/admin/users',
+        transactions: '/admin/transactions',
+        expenses: '/admin/expenses',
+        salaries: '/admin/salaries',
+        pagesEditor: '/admin/pages-editor',
+        settings: '/admin/settings',
+    },
+}

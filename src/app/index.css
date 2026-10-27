@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+@theme {
+    --color-primary: #00C97B;
+    --color-text: #1F2428;
+    --color-muted: #2D3236;
+    --color-line: #C0C9D7;
+    --color-soft: #F2F6FC;
+    --color-brand-from: #5B53A4;
+    --color-brand-to: #40B6E8;
+    --font-sans: "Gilroy", "Montserrat", sans-serif;
+}
+
+@layer base {
+    body {
+        @apply font-sans antialiased bg-white text-text;
+    }
+}
