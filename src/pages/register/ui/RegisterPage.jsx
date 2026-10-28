@@ -1,3 +1,10 @@
+import { AuthModal } from '@/widgets/auth-modal'
+import { RegisterForm } from '@/features/auth-register'
+
 export function RegisterPage() {
-    return <h1>Регистрация</h1>
+    return (
+        <AuthModal title="Начните совершать покупки в английских магазинах">
+            <RegisterForm />
+        </AuthModal>
+    )
 }

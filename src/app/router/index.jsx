@@ -19,6 +19,10 @@ import { ForgotPasswordPage } from '@/pages/forgot-password'
 import { NotFoundPage } from '@/pages/not-found'
 
 import { ProfilePage } from '@/pages/profile'
+import { ProfileEditPage } from '@/pages/profile-edit'
+import { ChangePasswordPage } from '@/pages/change-password'
+import { OrderCreatePage } from '@/pages/order-create'
+import { VirtualOrderPage } from '@/pages/virtual-order'
 import { OrdersPage } from '@/pages/orders'
 import { ParcelsPage } from '@/pages/parcels'
 import { TransactionsPage } from '@/pages/transactions'
@@ -64,7 +68,11 @@ export const router = createBrowserRouter([
         children: [
             { index: true, element: <Navigate to={ROUTES.cabinet.profile} replace /> },
             { path: ROUTES.cabinet.profile, element: <ProfilePage /> },
+            { path: ROUTES.cabinet.profileEdit, element: <ProfileEditPage /> },
+            { path: ROUTES.cabinet.passwordChange, element: <ChangePasswordPage /> },
             { path: ROUTES.cabinet.orders, element: <OrdersPage /> },
+            { path: ROUTES.cabinet.orderCreate, element: <OrderCreatePage /> },
+            { path: ROUTES.cabinet.virtualOrder, element: <VirtualOrderPage /> },
             { path: ROUTES.cabinet.parcels, element: <ParcelsPage /> },
             { path: ROUTES.cabinet.transactions, element: <TransactionsPage /> },
             { path: ROUTES.cabinet.createParcel, element: <CreateParcelPage /> },

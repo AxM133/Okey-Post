@@ -1,35 +1,52 @@
-import filter from '@/shared/assets/filter.svg'
+import filterIcon from '@/shared/assets/filter.svg'
 import { Button } from '@/shared/ui/Button'
 import { Container } from '@/shared/ui/Container'
 import { SearchInput } from '@/shared/ui/SearchInput'
 import { Tabs } from '@/shared/ui/Tabs'
 import { OrdersTable } from '@/entities/order'
+import { OrdersFilterForm } from '@/features/filter-orders'
 import { useOrdersSection } from '../model/useOrdersSection'
 
 export function OrdersSection() {
-    const { title, action, tabs, tab, setTab, query, setQuery, orders } = useOrdersSection()
+    const s = useOrdersSection()
 
     return (
         <section className="pt-17.5">
             <Container wide>
                 <div className="flex items-center justify-between">
-                    <h1 className="text-[28px] font-bold">{title}</h1>
-                    <Button>{action}</Button>
+                    <h1 className="text-[28px] font-bold">{s.title}</h1>
+
+                    <div className="flex items-center gap-5">
+                        <Button variant="outline" onClick={s.addVirtualOrder}>Добавить новый виртуальный заказ</Button>
+                        <Button onClick={s.addOrder}>Добавить новый заказ</Button>
+                    </div>
                 </div>
 
                 <div className="mt-15 flex items-end justify-between">
-                    <Tabs tabs={tabs} activeId={tab} onChange={setTab} className="w-90" />
+                    <Tabs tabs={s.tabs} activeId={s.tab} onChange={s.setTab} className="w-90" />
 
                     <div className="flex items-center gap-8">
-                        <SearchInput value={query} onChange={setQuery} placeholder="Поиск по трек номеру" className="w-105" />
-                        <button type="button" aria-label="Фильтр" className="flex size-15 cursor-pointer items-center justify-center rounded-full border border-primary">
-                            <img src={filter} alt="" />
+                        <SearchInput value={s.query} onChange={s.setQuery} placeholder="Поиск по трек номеру" className="w-105" />
+                        <button
+                            type="button"
+                            aria-label="Фильтр"
+                            aria-expanded={s.filterOpen}
+                            onClick={s.toggleFilter}
+                            className="flex size-15 cursor-pointer items-center justify-center rounded-full border border-primary"
+                        >
+                            <img src={filterIcon} alt="" />
                         </button>
                     </div>
                 </div>
 
+                {s.filterOpen && (
+                    <div className="mt-8">
+                        <OrdersFilterForm onApply={s.setFilters} />
+                    </div>
+                )}
+
                 <div className="mt-10">
-                    <OrdersTable orders={orders} />
+                    <OrdersTable orders={s.orders} />
                 </div>
             </Container>
         </section>

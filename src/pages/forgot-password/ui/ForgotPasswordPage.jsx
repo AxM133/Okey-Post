@@ -1,3 +1,10 @@
+import { AuthModal } from '@/widgets/auth-modal'
+import { RecoverForm } from '@/features/auth-recover'
+
 export function ForgotPasswordPage() {
-    return <h1>Восстановление пароля</h1>
+    return (
+        <AuthModal title="Восстановление пароля">
+            <RecoverForm />
+        </AuthModal>
+    )
 }

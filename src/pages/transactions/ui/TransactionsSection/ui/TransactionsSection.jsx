@@ -3,12 +3,11 @@ import { ROUTES } from '@/shared/config'
 import { Button } from '@/shared/ui/Button'
 import { Container } from '@/shared/ui/Container'
 import { TransactionsTable } from '@/entities/transaction'
+import { TransactionsFilterForm } from '@/features/filter-transactions'
 import { useTransactionsSection } from '../model/useTransactionsSection'
 
-const field = 'h-15 rounded-lg border border-line bg-white px-5 text-sm outline-none focus:border-primary'
-
 export function TransactionsSection() {
-    const { title, types, type, setType, range, setRange, transactions } = useTransactionsSection()
+    const { title, setFilters, transactions } = useTransactionsSection()
     const navigate = useNavigate()
 
     return (
@@ -23,20 +22,8 @@ export function TransactionsSection() {
                     </div>
                 </div>
 
-                <div className="mt-8 flex items-center gap-4">
-                    <input
-                        type="text"
-                        value={range}
-                        onChange={(e) => setRange(e.target.value)}
-                        placeholder="От и до"
-                        className={`${field} w-87`}
-                    />
-                    <select value={type} onChange={(e) => setType(e.target.value)} className={`${field} w-87`}>
-                        {types.map(({ id, label }) => (
-                            <option key={id} value={id}>{label}</option>
-                        ))}
-                    </select>
-                    <Button size="lg" className="w-60">Показать</Button>
+                <div className="mt-8">
+                    <TransactionsFilterForm onApply={setFilters} />
                 </div>
 
                 <div className="mt-10">

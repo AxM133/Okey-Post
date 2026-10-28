@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { ORDERS } from './orders.data'
+import { applyOrdersFilters } from './applyOrdersFilters'
 
 export const ORDER_TABS = [
     { id: 'all', label: 'Все' },
@@ -10,11 +11,13 @@ export const ORDER_TABS = [
 export function useOrders() {
     const [tab, setTab] = useState('all')
     const [query, setQuery] = useState('')
+    const [filters, setFilters] = useState(null)
 
     const q = query.trim()
-    const orders = ORDERS
-        .filter((o) => tab === 'all' || o.mine)
-        .filter((o) => o.track.includes(q))
+    const orders = applyOrdersFilters(
+        ORDERS.filter((o) => tab === 'all' || o.mine).filter((o) => o.track.includes(q)),
+        filters,
+    )
 
-    return { orders, tab, setTab, query, setQuery }
+    return { orders, tab, setTab, query, setQuery, filters, setFilters }
 }

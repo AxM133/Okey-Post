@@ -24,3 +24,11 @@ export const ADMIN_TRANSACTIONS = Array.from({ length: 6 }, (_, i) => ({
     type: 'Card-PayZone',
     fullName: 'Евгения Яшкуль (dmitro.uxui)',
 }))
+
+export const ADMIN_TRANSACTIONS_FILTER = {
+    fields: [
+        { name: 'orderId', key: 'orderId', placeholder: 'ID заказа' },
+        { name: 'fullName', key: 'fullName', placeholder: 'Пользователь' },
+    ],
+    withDates: true,
+}

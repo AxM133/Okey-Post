@@ -2,7 +2,7 @@ import { AdminListSection } from '@/widgets/admin-list-section'
 import { useAdminOrders } from '../model/useAdminOrders'
 
 export function AdminOrdersPage() {
-    const { tabs, tab, setTab, query, setQuery, columns, rows } = useAdminOrders()
+    const { tabs, tab, setTab, query, setQuery, columns, rows, filter } = useAdminOrders()
 
     return (
         <AdminListSection
@@ -12,7 +12,7 @@ export function AdminOrdersPage() {
             tab={tab}
             onTab={setTab}
             search={{ value: query, onChange: setQuery, placeholder: 'Поиск по трек номеру' }}
-            filters
+            filter={filter}
             columns={columns}
             rows={rows}
         />

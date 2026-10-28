@@ -28,3 +28,13 @@ export const ADMIN_ORDER_COLUMNS = [
 export const ADMIN_ORDERS = [
     { id: 1, date: '11.11.2021', orderId: '35657', cell: '689-1188', track: '231234234234', clientId: '989896', fullName: 'Levis', shop: 'Levis', weight: '152.33 kg', sum: '£568.00', delivery: '£8.00', fee: '10', tax: '0', received: '11.11.2021', type: 'regular' },
 ]
+
+export const ADMIN_ORDERS_FILTER = {
+    fields: [
+        { name: 'orderId', key: 'orderId', placeholder: 'ID заказа' },
+        { name: 'clientId', key: 'clientId', placeholder: 'User ID' },
+        { name: 'fullName', key: 'fullName', placeholder: 'Фамилия' },
+        { name: 'shop', key: 'shop', placeholder: 'Магазин' },
+    ],
+    withDates: true,
+}

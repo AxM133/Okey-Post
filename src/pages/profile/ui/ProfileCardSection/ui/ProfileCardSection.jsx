@@ -1,9 +1,12 @@
+import { Link, useNavigate } from 'react-router-dom'
+import { ROUTES } from '@/shared/config'
 import { Button } from '@/shared/ui/Button'
 import { Container } from '@/shared/ui/Container'
 import { useProfileCard } from '../model/useProfileCard'
 
 export function ProfileCardSection() {
     const { photo, rows, editLabel, passwordLabel } = useProfileCard()
+    const navigate = useNavigate()
 
     return (
         <section className="pt-20">
@@ -22,10 +25,10 @@ export function ProfileCardSection() {
                         </dl>
 
                         <div className="mt-8 flex items-center gap-7">
-                            <Button className="w-40">{editLabel}</Button>
-                            <a href="#" className="border-b border-dashed border-primary text-xs font-medium text-primary">
+                            <Button className="w-40" onClick={() => navigate(ROUTES.cabinet.profileEdit)}>{editLabel}</Button>
+                            <Link to={ROUTES.cabinet.passwordChange} className="border-b border-dashed border-primary text-xs font-medium text-primary">
                                 {passwordLabel}
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>

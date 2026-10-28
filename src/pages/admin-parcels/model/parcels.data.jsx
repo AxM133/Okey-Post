@@ -20,3 +20,11 @@ export const ADMIN_PARCEL_COLUMNS = [
 export const ADMIN_PARCELS = [
     { id: 1, parcelId: '35657', date: '11.11.2021', type: 'Mid Express', track: '231234234234', orders: '12', insurance: '0', cost: '£568.00', sum: '£568.00', total: '£568.00', delivery: '£8.00', fullName: 'Евгения Яшкуль (dmitro.uxui)', comment: '—' },
 ]
+
+export const ADMIN_PARCELS_FILTER = {
+    fields: [
+        { name: 'parcelId', key: 'parcelId', placeholder: 'ID заказа' },
+        { name: 'fullName', key: 'fullName', placeholder: 'Пользователь' },
+    ],
+    withDates: true,
+}

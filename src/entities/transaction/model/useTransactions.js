@@ -3,8 +3,14 @@ import { TRANSACTIONS } from './transactions.data'
 
 // Позже здесь будет запрос через axios.
 export function useTransactions() {
-    const [type, setType] = useState('all')
-    const [range, setRange] = useState('')
+    const [filters, setFilters] = useState({ type: 'all', dateFrom: '', dateTo: '' })
 
-    return { transactions: TRANSACTIONS, type, setType, range, setRange }
+    const transactions = TRANSACTIONS.filter((t) => {
+        if (filters.type !== 'all' && t.typeId !== filters.type) return false
+        if (filters.dateFrom && t.date < filters.dateFrom) return false
+        if (filters.dateTo && t.date > filters.dateTo) return false
+        return true
+    })
+
+    return { transactions, filters, setFilters }
 }

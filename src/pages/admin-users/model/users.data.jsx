@@ -13,3 +13,11 @@ export const ADMIN_USER_COLUMNS = [
 export const ADMIN_USERS = [
     { id: 1, userId: '35657', login: 'tima.fear', email: 'dmitro.uxui@gmail.com', name: 'Дмитрий', balance: '0' },
 ]
+
+export const ADMIN_USERS_FILTER = {
+    fields: [
+        { name: 'login', key: 'login', placeholder: 'Пользователь' },
+        { name: 'userId', key: 'userId', placeholder: 'ID пользователя' },
+    ],
+    withDates: false,
+}

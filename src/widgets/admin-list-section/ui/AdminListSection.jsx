@@ -3,8 +3,10 @@ import { Container } from '@/shared/ui/Container'
 import { DataTable } from '@/shared/ui/DataTable'
 import { SearchInput } from '@/shared/ui/SearchInput'
 import { Tabs } from '@/shared/ui/Tabs'
+import { AdminFiltersForm } from '@/features/admin-filters'
 
-// Шаблон страницы-списка админки: заголовок, вкладки, поиск, фильтры (заглушка), таблица.
+// Шаблон страницы-списка админки: заголовок, вкладки, поиск, фильтры, таблица.
+// filter: { config: { fields, withDates }, onApply }
 export function AdminListSection({
     title,
     note,
@@ -13,7 +15,7 @@ export function AdminListSection({
     tab,
     onTab,
     search,
-    filters = false,
+    filter,
     columns,
     rows,
 }) {
@@ -39,10 +41,9 @@ export function AdminListSection({
 
                 {tabs && <Tabs tabs={tabs} activeId={tab} onChange={onTab} className="mt-8 w-fit" />}
 
-                {filters && (
-                    // TODO (react-hook-form): период, «Без учета даты», ID, Магазин, Статус, «Показать», «Сбросить»
-                    <div className="mt-8 flex h-15 items-center justify-center rounded-xl border-2 border-dashed border-line text-sm text-muted">
-                        Фильтры (react-hook-form)
+                {filter && (
+                    <div className="mt-8">
+                        <AdminFiltersForm config={filter.config} onApply={filter.onApply} />
                     </div>
                 )}
 

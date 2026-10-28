@@ -14,7 +14,11 @@ export const ROUTES = {
     cabinet: {
         root: '/cabinet',
         profile: '/cabinet/profile',
+        profileEdit: '/cabinet/profile/edit',
+        passwordChange: '/cabinet/profile/password',
         orders: '/cabinet/orders',
+        orderCreate: '/cabinet/orders/new',
+        virtualOrder: '/cabinet/orders/virtual',
         parcels: '/cabinet/parcels',
         transactions: '/cabinet/transactions',
         createParcel: '/cabinet/create-parcel',

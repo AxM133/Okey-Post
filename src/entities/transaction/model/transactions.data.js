@@ -3,6 +3,7 @@ export const TRANSACTIONS = [
         id: 1,
         date: '2017-08-10',
         type: 'Банковский перевод',
+        typeId: 'bank',
         description: 'Оплата за посылку ID і46546544',
         credit: '0£',
         cashback: '0£',

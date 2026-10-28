@@ -41,12 +41,26 @@ SavingsSection/
 - Хуки сущностей (`useOrders`, `useReviews`...) сейчас отдают моки, позже в них будет запрос через axios.
 - Если в файле данных есть JSX (колонки таблиц с `render`), файл называется `*.data.jsx`.
 
-## Что ещё не сделано (ждёт react-hook-form и Context API)
+## Формы (react-hook-form)
 
-- формы: вход, регистрация, восстановление пароля, редактирование профиля, смена пароля,
-  адресная книга, создание посылки, оформление заказа, калькулятор доставки, подписка,
-  заказ по ссылке, фильтры в админке, настройки и редактирование заказа в админке
-  (на их местах заглушки с пометкой `TODO (react-hook-form)`);
-- `AuthContext`, защита маршрутов кабинета и админки;
-- axios-клиент и мок-API (json-server);
-- zustand-сторы (фильтры заказов, уведомления).
+Каждая форма живёт в `features/<имя>/` и устроена одинаково: в `model/useXxxForm.js` лежат `useForm`, правила проверки и отправка,
+в `ui/` только разметка. Общие правила (email, телефон, URL) в `shared/lib/validation.js`, имитация запроса `fakeRequest`.
+
+| Форма | Что показывает |
+|---|---|
+| subscribe | базовое: `register`, `handleSubmit`, `reset`, `mode: 'onBlur'` |
+| calculate-delivery | `valueAsNumber`, `min/max`, `pattern`, результат после отправки |
+| auth-login | два шага (данные → код из СМС), две формы в одном хуке |
+| auth-register, auth-recover | простые формы авторизации |
+| change-password | `validate` по значениям других полей, `deps` |
+| edit-profile | `defaultValues` из пользователя, загрузка файла, превью, `useWatch` |
+| create-order, address-book | `useFieldArray` (добавить, дублировать, удалить) |
+| create-virtual-order, create-parcel | чекбоксы-массив, `select` |
+| filter-orders, filter-transactions, admin-filters | формы-фильтры, сброс |
+| admin-login, admin-settings, admin-order-edit | `setError`, `isDirty`, `setValue` |
+
+## Что ещё не сделано
+
+- `AuthContext`: сейчас вход просто переходит в кабинет, пользователь «зашит» (`useCurrentUser`), нет защиты маршрутов;
+- axios-клиент и мок-API (json-server): вместо запросов везде `fakeRequest`, данные в `*.data.js`;
+- zustand-сторы (фильтры заказов, уведомления, корзина заказа вместо localStorage).

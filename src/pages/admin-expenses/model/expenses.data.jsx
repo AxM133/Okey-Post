@@ -21,3 +21,11 @@ export const ADMIN_EXPENSES = Array.from({ length: 6 }, (_, i) => ({
     sum: '£568.00',
     tax: '£8.00',
 }))
+
+export const ADMIN_EXPENSES_FILTER = {
+    fields: [
+        { name: 'account', key: 'account', placeholder: 'Номер счета' },
+        { name: 'fullName', key: 'fullName', placeholder: 'ФИО' },
+    ],
+    withDates: true,
+}
