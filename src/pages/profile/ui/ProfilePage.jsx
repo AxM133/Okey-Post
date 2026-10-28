@@ -1,3 +1,11 @@
+import { ProfileCardSection } from './ProfileCardSection'
+import { ProfileTabsSection } from './ProfileTabsSection'
+
 export function ProfilePage() {
-    return <h1>Профиль</h1>
+    return (
+        <>
+            <ProfileCardSection />
+            <ProfileTabsSection />
+        </>
+    )
 }

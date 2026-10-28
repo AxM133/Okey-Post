@@ -1,0 +1,20 @@
+import { useState } from 'react'
+import { ORDERS } from './orders.data'
+
+export const ORDER_TABS = [
+    { id: 'all', label: 'Все' },
+    { id: 'mine', label: 'Мои заказы' },
+]
+
+// Позже здесь будет запрос через axios и фильтры в сторе (zustand).
+export function useOrders() {
+    const [tab, setTab] = useState('all')
+    const [query, setQuery] = useState('')
+
+    const q = query.trim()
+    const orders = ORDERS
+        .filter((o) => tab === 'all' || o.mine)
+        .filter((o) => o.track.includes(q))
+
+    return { orders, tab, setTab, query, setQuery }
+}

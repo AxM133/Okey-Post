@@ -1,3 +1,14 @@
+import { PageBanner } from '@/widgets/page-banner'
+import { SocialBanner } from '@/widgets/social-banner'
+import { BANNER } from '../model/banner.data'
+import { BlogListSection } from './BlogListSection'
+
 export function BlogPage() {
-    return <h1>Блог</h1>
+    return (
+        <>
+            <PageBanner {...BANNER} />
+            <BlogListSection />
+            <SocialBanner />
+        </>
+    )
 }

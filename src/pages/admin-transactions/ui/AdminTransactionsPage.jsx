@@ -1,3 +1,16 @@
+import { AdminListSection } from '@/widgets/admin-list-section'
+import { useAdminTransactions } from '../model/useAdminTransactions'
+
 export function AdminTransactionsPage() {
-    return <h1>Админка: транзакции</h1>
+    const { query, setQuery, columns, rows } = useAdminTransactions()
+
+    return (
+        <AdminListSection
+            title="Транзакции"
+            search={{ value: query, onChange: setQuery, placeholder: 'ID заказа' }}
+            filters
+            columns={columns}
+            rows={rows}
+        />
+    )
 }

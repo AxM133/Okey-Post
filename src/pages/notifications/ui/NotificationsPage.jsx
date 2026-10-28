@@ -1,3 +1,5 @@
+import { NotificationsSection } from './NotificationsSection'
+
 export function NotificationsPage() {
-    return <h1>Уведомления</h1>
+    return <NotificationsSection />
 }

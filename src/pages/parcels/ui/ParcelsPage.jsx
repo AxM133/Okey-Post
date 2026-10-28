@@ -1,3 +1,5 @@
+import { ParcelsSection } from './ParcelsSection'
+
 export function ParcelsPage() {
-    return <h1>Посылки</h1>
+    return <ParcelsSection />
 }

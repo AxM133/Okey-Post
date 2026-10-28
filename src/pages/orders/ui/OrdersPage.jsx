@@ -1,3 +1,5 @@
+import { OrdersSection } from './OrdersSection'
+
 export function OrdersPage() {
-    return <h1>Заказы</h1>
+    return <OrdersSection />
 }

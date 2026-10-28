@@ -1,3 +1,16 @@
+import { AdminListSection } from '@/widgets/admin-list-section'
+import { useAdminUsers } from '../model/useAdminUsers'
+
 export function AdminUsersPage() {
-    return <h1>Админка: пользователи</h1>
+    const { query, setQuery, columns, rows } = useAdminUsers()
+
+    return (
+        <AdminListSection
+            title="Пользователи"
+            search={{ value: query, onChange: setQuery, placeholder: 'Логин или email' }}
+            filters
+            columns={columns}
+            rows={rows}
+        />
+    )
 }

@@ -1,3 +1,17 @@
+import { AdminListSection } from '@/widgets/admin-list-section'
+import { useAdminParcels } from '../model/useAdminParcels'
+
 export function AdminParcelsPage() {
-    return <h1>Админка: посылки</h1>
+    const { query, setQuery, columns, rows, barcodes } = useAdminParcels()
+
+    return (
+        <AdminListSection
+            title="Посылки"
+            note={<span className="text-xs font-bold">Количество баркодов: <span className="text-primary">{barcodes}</span></span>}
+            search={{ value: query, onChange: setQuery, placeholder: 'Поиск по трек номеру' }}
+            filters
+            columns={columns}
+            rows={rows}
+        />
+    )
 }
